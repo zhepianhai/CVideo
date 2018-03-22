@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorHome">#DB7093</color>
 
     <color name="black">#000000</color>
     <color name="lightBlack">#272822</color>
@@ -16,7 +17,7 @@
     <color name="lightred">#FE5442</color>
     <color name="lightred1">#afFE5442</color>
 
-    <color name="floating_action_button_tine_bg_color">@color/white</color>
-    <color name="bottom_navigation_bar_active">@color/colorPrimary</color>
+    <color name="floating_action_button_tine_bg_color">@color/colorHome</color>
+    <color name="bottom_navigation_bar_active">@color/colorHome</color>
     <color name="bottom_navigation_bar_background">@color/white</color>
 </resources>

@@ -1,8 +1,10 @@
 package com.zph.cvideo.ui;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.ColorInt;
@@ -12,12 +14,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.jaeger.library.StatusBarUtil;
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
 import com.trello.rxlifecycle2.LifecycleProvider;
+import com.zph.cvideo.MyApplication;
 import com.zph.cvideo.R;
+import com.zph.cvideo.inject.component.ActivityComponent;
+import com.zph.cvideo.inject.component.DaggerActivityComponent;
+import com.zph.cvideo.inject.model.ActivityModule;
 
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
@@ -27,6 +36,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * @date 2018/3/20
  */
 
+@SuppressLint("Registered")
 public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipeBackHelper.Delegate {
     private final String TAG = this.getClass().getSimpleName();
 
@@ -35,19 +45,22 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     protected BGASwipeBackHelper mSwipeBackHelper;
     protected boolean existActivityWithAnimation = true;
     protected Context context;
-//    private ActivityComponent mActivityComponent;
-
+    private ActivityComponent mActivityComponent;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        initSwipeBackFinish();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mActivityComponent = DaggerActivityComponent.builder()
-//                .activityModule(new ActivityModule(this))
-//                .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
-//                .build();
+        Log.i("TAG","mActivityComponent_star");
+        mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
+                .build();
+        Log.i("TAG","mActivityComponent"+mActivityComponent.toString());
+        initSwipeBackFinish();
         context = this;
     }
-
+    public ActivityComponent getActivityComponent() {
+        return mActivityComponent;
+    }
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
@@ -130,7 +143,8 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
      * @param color
      */
     protected void setStatusBarColor(@ColorInt int color) {
-        setStatusBarColor(color, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+        setStatusBarColor(color, Color.TRANSPARENT);
+
     }
 
     /**

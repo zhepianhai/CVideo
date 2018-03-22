@@ -1,11 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus" tools:ignore="NewApi">true</item>
     </style>
 
+    <style name="badgeText" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textSize">@dimen/badge_text_size</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginTop">@dimen/badge_top_margin</item>
+        <item name="android:paddingRight">@dimen/badge_width_padding</item>
+        <item name="android:paddingLeft">@dimen/badge_width_padding</item>
+        <item name="android:paddingBottom">@dimen/badge_height_padding</item>
+        <item name="android:paddingTop">@dimen/badge_height_padding</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>

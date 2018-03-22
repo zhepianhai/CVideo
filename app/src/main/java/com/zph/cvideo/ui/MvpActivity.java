@@ -2,6 +2,7 @@ package com.zph.cvideo.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
@@ -26,8 +27,9 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
     protected boolean retainInstance;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("TAG","CCC");
         getMvpDelegate().onCreate(savedInstanceState);
     }
 
@@ -58,6 +60,7 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
     @Override
     protected void onStart() {
         super.onStart();
+        Log.i("TAG","onStart");
         getMvpDelegate().onStart();
     }
 
@@ -82,6 +85,7 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        Log.i("TAG","onPostCreate");
         getMvpDelegate().onPostCreate(savedInstanceState);
     }
 
@@ -113,7 +117,7 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpDelegateImpl(this, this, true);
         }
-
+        Log.i("TAG","getMvpDelegate");
         return mvpDelegate;
     }
 

@@ -1,4 +1,4 @@
-package com.zph.cvideo.di.module;
+package com.zph.cvideo.inject.model;
 
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
 import com.trello.rxlifecycle2.LifecycleProvider;
-import com.zph.cvideo.di.ActivityContext;
+import com.zph.cvideo.inject.ActivityContext;
 import com.zph.cvideo.utils.AppCacheUtils;
 
 import java.io.File;
@@ -20,7 +20,7 @@ import dagger.Provides;
 
 /**
  * @author zph
- * @date 2018/3/20
+ * @date 2018/3/21
  */
 @Module
 public class ActivityModule {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@android:color/white"
     tools:context="com.zph.cvideo.ui.main.MainActivity">
 
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="10dp"
+            app:fabSize="mini"
             app:backgroundTint="@color/floating_action_button_tine_bg_color"
             android:tint="@android:color/white"
             app:srcCompat="@drawable/ic_add_black_24dp" />

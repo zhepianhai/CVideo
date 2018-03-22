@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * <pre>
  *     author: zph
- *     time  : 2017/12/29
+ *     time  : 2018/3/21
  *     desc  : 权限相关常量
  * </pre>
  */
