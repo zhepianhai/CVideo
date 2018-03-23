@@ -49,12 +49,10 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("TAG","mActivityComponent_star");
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
                 .build();
-        Log.i("TAG","mActivityComponent"+mActivityComponent.toString());
         initSwipeBackFinish();
         context = this;
     }
