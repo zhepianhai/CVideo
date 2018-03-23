@@ -1,4 +1,6 @@
 package com.zph.cvideo.base;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -7,5 +9,5 @@ import java.util.List;
  */
 
 public interface IBaseMain {
-
+    void loadAllCategoryData(int categoryType);
 }

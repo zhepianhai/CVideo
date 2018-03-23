@@ -3,6 +3,7 @@ package com.zph.cvideo.base;
 
 import com.zph.cvideo.ui.BaseView;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,4 +13,5 @@ import java.util.List;
  */
 
 public interface BaseMainView extends BaseView {
+    void onLoadAllCategoryData(List<HashMap<String,String>> categoryList);
 }

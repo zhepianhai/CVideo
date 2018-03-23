@@ -27,10 +27,12 @@ import android.widget.PopupWindow;
 
 import com.devbrackets.android.exomedia.util.ResourceUtil;
 import com.zph.cvideo.R;
+import com.zph.cvideo.adpter.BaseMainFragmentAdapter;
 import com.zph.cvideo.ui.MvpFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -45,23 +47,34 @@ import butterknife.Unbinder;
  * @author zph
  */
 public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMainPresenter> implements BaseMainView, View.OnClickListener{
-
-
-//    private static final String TAG = Main91PronVideoFragment.class.getSimpleName();
-    private boolean isBackground = false;
-
+    @BindView(R.id.frag_base_tabLayout)
+    TabLayout mTabLayout;
+//    @BindView(R.id.frag_base_iv_sort_category)
+//    AppCompatImageButton mIvSortCategory;
+    @BindView(R.id.frag_base_viewPager)
+    ViewPager mViewPager;
+    Unbinder unbinder;
+    private boolean mIsBackground = false;
+    private int mCurrentSelectPosition = 0;
     @Inject
-    BaseMainPresenter baseMainPresenter;
+    BaseMainPresenter mBaseMainPresenter;
 
+    private BaseMainFragmentAdapter mBaseMainFragmentAdapter;
+    private FragmentManager mFragmentManager;
+    private ArrayList<HashMap<String,String>> list;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 //        EventBus.getDefault().register(this);
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mFragmentManager = getChildFragmentManager();
+        list=new ArrayList<>();
+        mBaseMainFragmentAdapter = new BaseMainFragmentAdapter(mFragmentManager, list, getCategoryType());
     }
 
     public BaseMainFragment() {
@@ -81,15 +94,47 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     @Override
     public BaseMainPresenter createPresenter() {
         getActivityComponent().inject(this);
-        return baseMainPresenter;
+        return mBaseMainPresenter;
+    }
+
+    @Override
+    public void onLoadAllCategoryData(List<HashMap<String, String>> categoryList) {
+        list.clear();
+        list.addAll(categoryList);
+        mBaseMainFragmentAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        unbinder = ButterKnife.bind(this, view);
-    }
+        unbinder = ButterKnife.bind(this, view);
+//        Drawable dropDownDrawable = ResourceUtil.tintList(context, R.drawable.ic_arrow_drop_down_black_24dp, R.color.white);
+//        mIvSortCategory.setImageDrawable(dropDownDrawable);
+//        mIvSortCategory.setOnClickListener(this);
+        mBaseMainFragmentAdapter.setDestroy(isNeedDestroy());
+        mViewPager.setAdapter(mBaseMainFragmentAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mCurrentSelectPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        presenter.loadAllCategoryData(getCategoryType());
+
+    }
+    public abstract int getCategoryType();
+    public abstract ArrayList<HashMap<String,String>> getCategoryList();
     public boolean isNeedDestroy() {
         return false;
     }
@@ -97,13 +142,13 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     @Override
     public void onResume() {
         super.onResume();
-        isBackground = false;
+        mIsBackground = false;
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        isBackground = true;
+        mIsBackground = true;
     }
 
     @Override
@@ -115,7 +160,7 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        unbinder.unbind();
+        unbinder.unbind();
     }
 
 

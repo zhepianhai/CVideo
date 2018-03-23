@@ -77,7 +77,7 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setStatusBarColor(Color.WHITE);
+
         mFragmentManager = getSupportFragmentManager();
         mSelectIndex = getIntent().getIntExtra(CONST_QUERY.KEY_SELECT_INDEX, 0);
         if (savedInstanceState != null) {
@@ -152,14 +152,17 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
             case 0:
                 handlerFirstTabClickToShow(position, false);
                 showFloatingActionButton(mFabSearch);
+                setStatusBarColor(getResources().getColor(R.color.colorHome));
                 break;
             case 1:
                 handlerFirstTabClickToShow(position, false);
                 hideFloatingActionButton(mFabSearch);
+                setStatusBarColor(Color.WHITE);
                 break;
             case 2:
                 handlerFirstTabClickToShow(position, false);
                 hideFloatingActionButton(mFabSearch);
+                setStatusBarColor(Color.WHITE);
                 break;
             default:
         }

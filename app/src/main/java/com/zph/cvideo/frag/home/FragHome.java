@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 
 import com.zph.cvideo.R;
 import com.zph.cvideo.base.BaseMainFragment;
+import com.zph.cvideo.data.model.Category;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -21,31 +26,13 @@ public class FragHome extends BaseMainFragment {
         return new FragHome();
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getActivityComponent().inject(this);
+    public int getCategoryType() {
+        return Category.HOME;
     }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    public ArrayList<HashMap<String, String>> getCategoryList() {
+        return null;
     }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
+
 }

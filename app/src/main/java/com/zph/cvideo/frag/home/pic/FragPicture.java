@@ -1,20 +1,21 @@
-package com.zph.cvideo.frag.more;
+package com.zph.cvideo.frag.home.pic;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.zph.cvideo.R;
-import com.zph.cvideo.base.BaseMainFragment;
-import com.zph.cvideo.data.model.Category;
+import com.zph.cvideo.frag.home.audio.FragAudio;
 import com.zph.cvideo.ui.BaseFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * @author zph
@@ -22,37 +23,34 @@ import java.util.HashMap;
  */
 
 
-public class FragMore extends BaseFragment {
-    public static FragMore getInstance() {
-        return new FragMore();
+public class FragPicture extends BaseFragment {
+    public static FragPicture getInstance() {
+        return new FragPicture();
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getActivityComponent().inject(this);
-    }
+    Unbinder unbinder;
+    @BindView(R.id.frag_home_pic_btn_takephoto)
+    AppCompatButton mBtnTakePhoto;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_more, container, false);
+        return inflater.inflate(R.layout.frag_picture, container, false);
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        unbinder = ButterKnife.bind(this, view);
     }
-    @Override
-    public void onResume() {
-        super.onResume();
+    @OnClick(R.id.frag_home_pic_btn_takephoto)
+    public void tackPhoto(){
+        
     }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        unbinder.unbind();
     }
 }
