@@ -157,7 +157,7 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
             case 1:
                 handlerFirstTabClickToShow(position, false);
                 hideFloatingActionButton(mFabSearch);
-                setStatusBarColor(Color.WHITE);
+                setStatusBarColor(getResources().getColor(R.color.colorHome));
                 break;
             case 2:
                 handlerFirstTabClickToShow(position, false);
