@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.takephoto.ActTakePhoto">
 
-</android.support.constraint.ConstraintLayout>
+    <com.zph.cvideo.custom.MyCameraView
+        android:id="@+id/view_act_take_photo_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

@@ -90,9 +90,8 @@ dependencies {
     // To use Gson
     compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
     implementation project(':exolibrary')
-
     //permission
     compile 'com.yanzhenjie:permission:1.1.2'
-
     compile 'com.jaeger.statusbarutil:library:1.4.0'
+    implementation files('libs/HTPDA_6.0_Publish.jar')
 }

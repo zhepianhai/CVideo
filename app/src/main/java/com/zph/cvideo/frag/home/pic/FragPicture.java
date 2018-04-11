@@ -1,5 +1,6 @@
 package com.zph.cvideo.frag.home.pic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import com.zph.cvideo.R;
 import com.zph.cvideo.frag.home.audio.FragAudio;
 import com.zph.cvideo.ui.BaseFragment;
+import com.zph.cvideo.ui.takephoto.ActTakePhoto;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +47,8 @@ public class FragPicture extends BaseFragment {
     }
     @OnClick(R.id.frag_home_pic_btn_takephoto)
     public void tackPhoto(){
-        
+        Intent intent=new Intent(getActivity(),ActTakePhoto.class);
+        getActivity().startActivity(intent);
     }
 
     @Override

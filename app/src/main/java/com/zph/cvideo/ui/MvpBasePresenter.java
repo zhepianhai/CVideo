@@ -17,6 +17,7 @@
 package com.zph.cvideo.ui;
 
 import android.arch.lifecycle.Lifecycle;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
 
@@ -86,6 +87,8 @@ public class MvpBasePresenter<V extends MvpView> extends BasePresenter implement
 
     private WeakReference<V> viewRef;
     private boolean presenterDestroyed = false;
+    private Context mContext;
+
 
     @UiThread
     @Override

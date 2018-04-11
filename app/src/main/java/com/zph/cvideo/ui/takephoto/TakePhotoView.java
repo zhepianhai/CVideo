@@ -12,4 +12,5 @@ public interface TakePhotoView extends MvpView {
     void save();
     void dismiss();
     void transformation();
+    void initCamera();
 }
