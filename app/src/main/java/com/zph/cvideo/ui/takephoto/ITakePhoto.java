@@ -7,6 +7,7 @@ import android.hardware.Camera;
  */
 
 public interface ITakePhoto {
-    void takephoto();
     void initCamera(Camera camera);
+    void transformCamer(Camera camera);
+    void loadPicEffectLay();
 }

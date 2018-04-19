@@ -5,10 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.takephoto.ActTakePhoto">
 
-    <com.zph.cvideo.custom.MyCameraView
-        android:id="@+id/view_act_take_photo_surface"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </FrameLayout>

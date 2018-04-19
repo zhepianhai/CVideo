@@ -24,6 +24,7 @@ import android.support.annotation.UiThread;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.trello.rxlifecycle2.LifecycleProvider;
+import com.zph.cvideo.data.AppDataManager;
 
 import java.lang.ref.WeakReference;
 
@@ -57,6 +58,9 @@ public class MvpBasePresenter<V extends MvpView> extends BasePresenter implement
         super(provider);
     }
 
+    public MvpBasePresenter(LifecycleProvider<Lifecycle.Event> provider, AppDataManager appDataManager) {
+        super(provider, appDataManager);
+    }
     public MvpBasePresenter() {
     }
 

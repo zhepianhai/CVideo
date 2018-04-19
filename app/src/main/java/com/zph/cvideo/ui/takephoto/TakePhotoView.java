@@ -1,16 +1,18 @@
 package com.zph.cvideo.ui.takephoto;
 
+import android.hardware.Camera;
+
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
- * Created by 3119 on 2018/3/23.
+ *
+ * @author zph
+ * @date 2018/3/23
  */
 
 public interface TakePhotoView extends MvpView {
+    void initCamerFinsih( Camera mCamera);
 
-    void takePhoto();
-    void save();
-    void dismiss();
-    void transformation();
-    void initCamera();
+    void showLoading(boolean b);
+    void dismissDialog();
 }

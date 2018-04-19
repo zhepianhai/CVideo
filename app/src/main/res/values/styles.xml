@@ -19,4 +19,8 @@
         <item name="android:paddingTop">@dimen/badge_height_padding</item>
         <item name="android:visibility">gone</item>
     </style>
+
+    <style name="LoadingDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@drawable/icoon_dialog_corner_bg</item>
+    </style>
 </resources>

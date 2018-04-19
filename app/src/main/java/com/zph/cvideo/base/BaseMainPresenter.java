@@ -25,7 +25,7 @@ public class BaseMainPresenter extends MvpBasePresenter<BaseMainView> implements
     @Override
     public void loadAllCategoryData(int categoryType) {
         if(categoryType== Category.HOME){
-            ArrayList<HashMap<String,String>> list=new ArrayList<>();
+            final ArrayList<HashMap<String,String>> list=new ArrayList<>();
             HashMap<String,String> map=null;
             for(int i=0;i<Category.HOMETABLNAMES.length;++i){
                 map=new HashMap<>();
