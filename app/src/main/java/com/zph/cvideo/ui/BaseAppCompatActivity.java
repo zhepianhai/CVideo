@@ -24,10 +24,13 @@ import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.zph.cvideo.MyApplication;
 import com.zph.cvideo.R;
+import com.zph.cvideo.data.DataManager;
 import com.zph.cvideo.inject.component.ActivityComponent;
 import com.zph.cvideo.inject.component.DaggerActivityComponent;
 import com.zph.cvideo.inject.model.ActivityModule;
 
+
+import javax.inject.Inject;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -46,6 +49,7 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     protected boolean existActivityWithAnimation = true;
     protected Context context;
     private ActivityComponent mActivityComponent;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
