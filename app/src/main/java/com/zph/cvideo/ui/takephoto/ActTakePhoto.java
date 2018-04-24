@@ -27,6 +27,11 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Inject
     TakePhtotPresenter mTakePhotoProsenter;
 
+    public ActTakePhoto(){
+
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
