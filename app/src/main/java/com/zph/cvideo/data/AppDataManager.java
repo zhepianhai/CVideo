@@ -1,5 +1,7 @@
 package com.zph.cvideo.data;
 
+import android.graphics.Bitmap;
+
 import com.zph.cvideo.data.img.DataImgHelp;
 import com.zph.cvideo.data.network.ApiHelper;
 
@@ -14,8 +16,10 @@ import io.reactivex.Observable;
  */
 @Singleton
 public class AppDataManager implements DataManager {
-    private final DataImgHelp mDataImgHelp;
-    private final ApiHelper mApiHelper;
+    private  DataImgHelp mDataImgHelp;
+    private  ApiHelper mApiHelper;
+
+
     @Inject
     public  AppDataManager(DataImgHelp mDataImgHelp,ApiHelper mApiHelper) {
         this.mApiHelper=mApiHelper;
@@ -23,17 +27,17 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<String> getMorePicEffect() {
-        return null;
+    public Observable<String> getMorePicEffect(String string) {
+        return mApiHelper.getMorePicEffect(string);
     }
 
     @Override
-    public Observable<String> getMorePictexture() {
-        return null;
+    public Observable<String> getMorePictexture(String string) {
+        return mApiHelper.getMorePictexture(string);
     }
 
     @Override
-    public void takePhotoByCamer() {
-
+    public Bitmap takePhotoByCamer(String string) {
+        return mDataImgHelp.takePhotoByCamer(string);
     }
 }

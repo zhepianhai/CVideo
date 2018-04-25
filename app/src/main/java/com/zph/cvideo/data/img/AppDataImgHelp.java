@@ -1,5 +1,7 @@
 package com.zph.cvideo.data.img;
 
+import android.graphics.Bitmap;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -8,14 +10,17 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class AppDataImgHelp  implements DataImgHelp{
-
+//    String string;
     @Inject
-    public AppDataImgHelp(){
+    public AppDataImgHelp(){}
+//    public AppDataImgHelp(String string){
+//        this.string=string;
+//    }
 
-    }
 
     @Override
-    public void takePhotoByCamer() {
-
+    public Bitmap takePhotoByCamer(String string) {
+        Bitmap bitmap=null;
+        return bitmap;
     }
 }

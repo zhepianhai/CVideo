@@ -1,5 +1,7 @@
 package com.zph.cvideo.data.img;
 
+import android.graphics.Bitmap;
+
 /**
  *
  * @author zph
@@ -7,5 +9,5 @@ package com.zph.cvideo.data.img;
  */
 public interface DataImgHelp {
 
-    void takePhotoByCamer();
+    Bitmap takePhotoByCamer(String string);
 }

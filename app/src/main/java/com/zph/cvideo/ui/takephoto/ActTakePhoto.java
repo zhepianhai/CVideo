@@ -27,9 +27,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Inject
     TakePhtotPresenter mTakePhotoProsenter;
 
-    public ActTakePhoto(){
 
-    }
 
 
     @Override
@@ -52,7 +50,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Override
     public void initCamerFinsih( Camera mCamera) {
         this.mCamera=mCamera;
-        mTakePhotoProsenter.loadPicEffectLay();
+//        mTakePhotoProsenter.loadPicEffectLay();
     }
 
     @Override

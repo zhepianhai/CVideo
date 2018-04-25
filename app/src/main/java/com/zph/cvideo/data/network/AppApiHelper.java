@@ -10,19 +10,24 @@ import io.reactivex.Observable;
  */
 @Singleton
 public class AppApiHelper  implements ApiHelper{
-
+//    String string;
     @Inject
     public AppApiHelper(){
 
     }
 
+//    public AppApiHelper(String string){
+//        this.string=string;
+//    }
+
     @Override
-    public Observable<String> getMorePicEffect() {
-        return null;
+    public Observable<String> getMorePicEffect(String string) {
+        Observable<String> ast = null;
+        return ast;
     }
 
     @Override
-    public Observable<String> getMorePictexture() {
+    public Observable<String> getMorePictexture(String string) {
         return null;
     }
 }

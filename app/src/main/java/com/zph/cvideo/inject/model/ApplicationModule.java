@@ -57,7 +57,7 @@ public class ApplicationModule {
 
     @Singleton
     @Provides
-    DataImgHelp providesApiHelper(AppDataImgHelp appDataImgHelp) {
+    DataImgHelp providesDataImgHelp(AppDataImgHelp appDataImgHelp) {
         return appDataImgHelp;
     }
 

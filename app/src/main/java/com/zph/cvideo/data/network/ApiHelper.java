@@ -9,6 +9,6 @@ import io.reactivex.Observable;
  */
 public interface ApiHelper {
     //pic
-    Observable<String> getMorePicEffect();
-    Observable<String> getMorePictexture();
+    Observable<String> getMorePicEffect(String string);
+    Observable<String> getMorePictexture(String string);
 }

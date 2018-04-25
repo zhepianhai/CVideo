@@ -23,9 +23,11 @@ import io.reactivex.disposables.Disposable;
 
 public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implements ITakePhoto {
     private DataManager mDataManager;
-
+    private LifecycleProvider<Lifecycle.Event> provider;
     @Inject
     public TakePhtotPresenter(LifecycleProvider<Lifecycle.Event> provider, DataManager dataManager) {
+//        super(provider);
+        this.provider=provider;
         this.mDataManager = dataManager;
     }
 
@@ -46,10 +48,11 @@ public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implemen
 
     @Override
     public void loadPicEffectLay() {
-        mDataManager.getMorePicEffect()
-                .compose(RxSchedulersHelper.<Object>ioMainThread())
-                .compose(provider.<Object>bindUntilEvent(Lifecycle.Event.ON_DESTROY))
-                .subscribe(new CallBackWrapper<Object>() {
+        String a="";
+        mDataManager.getMorePicEffect(a)
+                .compose(RxSchedulersHelper.<String>ioMainThread())
+                .compose(provider.<String>bindUntilEvent(Lifecycle.Event.ON_DESTROY))
+                .subscribe(new CallBackWrapper<String>() {
 
                     @Override
                     public void onBegin(Disposable d) {
@@ -61,8 +64,10 @@ public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implemen
                         });
                     }
 
+
+
                     @Override
-                    public void onSuccess(Object o) {
+                    public void onSuccess(String o) {
                         ifViewAttached(new ViewAction<TakePhotoView>() {
                             @Override
                             public void run(@NonNull TakePhotoView view) {
