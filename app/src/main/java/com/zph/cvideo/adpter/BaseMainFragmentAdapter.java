@@ -8,10 +8,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
 
 
-import com.zph.cvideo.data.model.Category;
 import com.zph.cvideo.frag.home.audio.FragAudio;
 import com.zph.cvideo.frag.home.pic.FragPicture;
 import com.zph.cvideo.frag.home.video.FragVideo;
+import com.zph.cvideo.utils.constants.Constants;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -59,7 +60,7 @@ public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return categoryList.get(position).get(Category.CATGORY_TITLE);
+        return categoryList.get(position).get(Constants.CATGORY_TITLE);
     }
 
     @Override
@@ -69,14 +70,14 @@ public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
 
     private Fragment buildFragmentItem(int type, int position) {
         HashMap<String,String> category = categoryList.get(position);
-        int types=Integer.valueOf(category.get(Category.CATGORY_TYPE));
-        if(type==Category.HOME) {
+        int types=Integer.valueOf(category.get(Constants.CATGORY_TYPE));
+        if(type==Constants.HOME) {
             switch (types) {
-                case Category.HOME_PICTURE:
-                    if (Category.HOME_PICTURE == Integer.valueOf(category.get(Category.CATGORY_TYPE))) {
+                case Constants.HOME_PICTURE:
+                    if (Constants.HOME_PICTURE == Integer.valueOf(category.get(Constants.CATGORY_TYPE))) {
                         FragPicture picFragment = FragPicture.getInstance();
                         return picFragment;
-                    } else if (Category.HOME_VIDEO == Integer.valueOf(category.get(Category.CATGORY_TYPE))) {
+                    } else if (Constants.HOME_VIDEO == Integer.valueOf(category.get(Constants.CATGORY_TYPE))) {
                         FragVideo picFragment = FragVideo.getInstance();
                         return picFragment;
                     } else {
@@ -85,7 +86,7 @@ public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
                     }
             }
         }
-        else if(type==Category.INFO){
+        else if(type==Constants.INFO){
 
         }
         return  new Fragment();

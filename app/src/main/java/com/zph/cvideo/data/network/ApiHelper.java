@@ -1,5 +1,7 @@
 package com.zph.cvideo.data.network;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 
 /**
@@ -9,6 +11,6 @@ import io.reactivex.Observable;
  */
 public interface ApiHelper {
     //pic
-    Observable<String> getMorePicEffect(String string);
+    Observable<List<Object>> getMorePicEffect(String category, boolean pullToRefresh);
     Observable<String> getMorePictexture(String string);
 }

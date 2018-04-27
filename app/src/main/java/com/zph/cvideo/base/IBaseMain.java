@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface IBaseMain {
-    void loadAllCategoryData(int categoryType);
+    void loadOneFragMentData(int categoryType);
 }

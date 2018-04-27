@@ -6,31 +6,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.jaeger.library.StatusBarUtil;
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.zph.cvideo.MyApplication;
 import com.zph.cvideo.R;
-import com.zph.cvideo.data.DataManager;
 import com.zph.cvideo.inject.component.ActivityComponent;
 import com.zph.cvideo.inject.component.DaggerActivityComponent;
 import com.zph.cvideo.inject.model.ActivityModule;
 
-
-import javax.inject.Inject;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -44,11 +38,12 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     private final String TAG = this.getClass().getSimpleName();
 
     protected final LifecycleProvider<Lifecycle.Event> provider = AndroidLifecycle.createLifecycleProvider(this);
-
+    private final String KEY_SAVE_DIN_STANCE_STATE_CATEGORY = "key_save_din_stance_state_category";
     protected BGASwipeBackHelper mSwipeBackHelper;
     protected boolean existActivityWithAnimation = true;
     protected Context context;
     private ActivityComponent mActivityComponent;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -206,6 +201,11 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
         mSwipeBackHelper.setSwipeBackThreshold(0.3f);
         // 设置底部导航条是否悬浮在内容上，默认值为 false
         mSwipeBackHelper.setIsNavigationBarOverlap(false);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
 }

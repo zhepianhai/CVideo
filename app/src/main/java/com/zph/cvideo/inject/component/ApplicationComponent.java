@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.zph.cvideo.MyApplication;
 import com.zph.cvideo.data.DataManager;
+import com.zph.cvideo.data.network.AddressHelper;
 import com.zph.cvideo.inject.ApplicationContext;
 import com.zph.cvideo.inject.model.ApiServiceModule;
 import com.zph.cvideo.inject.model.ApplicationModule;
@@ -25,6 +26,6 @@ public interface ApplicationComponent{
 
     @ApplicationContext
     Context getContext();
-
+    AddressHelper getAddressHelper();
     DataManager getDataManager();
 }

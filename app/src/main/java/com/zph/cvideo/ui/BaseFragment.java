@@ -17,8 +17,6 @@ import com.zph.cvideo.inject.component.ActivityComponent;
 import com.zph.cvideo.inject.component.DaggerActivityComponent;
 import com.zph.cvideo.inject.model.ActivityModule;
 
-import javax.inject.Inject;
-
 /**
  *
  * @author zph
@@ -31,7 +29,6 @@ public abstract class BaseFragment extends Fragment {
     protected final LifecycleProvider<Lifecycle.Event> provider = AndroidLifecycle.createLifecycleProvider(this);
     protected Context context;
     protected Activity activity;
-//    protected Category category;
     protected boolean mIsLoadedData;
     private ActivityComponent mActivityComponent;
 

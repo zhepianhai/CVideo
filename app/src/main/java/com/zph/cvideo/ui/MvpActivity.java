@@ -40,7 +40,7 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         getMvpDelegate().onSaveInstanceState(outState);
     }

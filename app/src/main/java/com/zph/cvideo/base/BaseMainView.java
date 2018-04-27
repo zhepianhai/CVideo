@@ -13,5 +13,5 @@ import java.util.List;
  */
 
 public interface BaseMainView extends BaseView {
-    void onLoadAllCategoryData(List<HashMap<String,String>> categoryList);
+    void onLoadAllFragMentViewFinish(List<HashMap<String,String>> categoryList);
 }

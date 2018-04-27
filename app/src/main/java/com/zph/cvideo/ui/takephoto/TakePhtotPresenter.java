@@ -12,6 +12,8 @@ import com.zph.cvideo.rxjava.CallBackWrapper;
 import com.zph.cvideo.rxjava.RxSchedulersHelper;
 import com.zph.cvideo.ui.MvpBasePresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
@@ -23,11 +25,10 @@ import io.reactivex.disposables.Disposable;
 
 public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implements ITakePhoto {
     private DataManager mDataManager;
-    private LifecycleProvider<Lifecycle.Event> provider;
+//    private LifecycleProvider<Lifecycle.Event> provider;
     @Inject
     public TakePhtotPresenter(LifecycleProvider<Lifecycle.Event> provider, DataManager dataManager) {
-//        super(provider);
-        this.provider=provider;
+        super(provider);
         this.mDataManager = dataManager;
     }
 
@@ -47,12 +48,17 @@ public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implemen
     }
 
     @Override
-    public void loadPicEffectLay() {
+    public void loadPicEffectLay(String category, boolean pullToRefresh) {
         String a="";
-        mDataManager.getMorePicEffect(a)
-                .compose(RxSchedulersHelper.<String>ioMainThread())
-                .compose(provider.<String>bindUntilEvent(Lifecycle.Event.ON_DESTROY))
-                .subscribe(new CallBackWrapper<String>() {
+        if(provider==null){
+            return;
+        }
+        mDataManager.getMorePicEffect(category,pullToRefresh)
+                .compose(RxSchedulersHelper.<List<Object>> ioMainThread())
+                .compose(provider.
+                        <List<Object>>bindUntilEvent(
+                                Lifecycle.Event.ON_DESTROY))
+                .subscribe(new CallBackWrapper<List<Object>>() {
 
                     @Override
                     public void onBegin(Disposable d) {
@@ -67,7 +73,7 @@ public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implemen
 
 
                     @Override
-                    public void onSuccess(String o) {
+                    public void onSuccess(List<Object> o) {
                         ifViewAttached(new ViewAction<TakePhotoView>() {
                             @Override
                             public void run(@NonNull TakePhotoView view) {

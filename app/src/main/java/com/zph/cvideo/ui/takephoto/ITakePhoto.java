@@ -9,5 +9,5 @@ import android.hardware.Camera;
 public interface ITakePhoto {
     void initCamera(Camera camera);
     void transformCamer(Camera camera);
-    void loadPicEffectLay();
+    void loadPicEffectLay(String category, boolean pullToRefresh);
 }

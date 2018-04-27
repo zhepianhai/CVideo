@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.zph.cvideo.R;
 import com.zph.cvideo.base.BaseMainFragment;
-import com.zph.cvideo.data.model.Category;
 import com.zph.cvideo.ui.BaseFragment;
 
 import java.util.ArrayList;

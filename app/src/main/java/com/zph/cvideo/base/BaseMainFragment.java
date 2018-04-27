@@ -47,24 +47,23 @@ import butterknife.Unbinder;
  * @author zph
  */
 public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMainPresenter> implements BaseMainView, View.OnClickListener{
-    @BindView(R.id.frag_base_tabLayout)
+//    @BindView(R.id.frag_base_tabLayout)
     TabLayout mTabLayout;
-//    @BindView(R.id.frag_base_iv_sort_category)
-//    AppCompatImageButton mIvSortCategory;
-    @BindView(R.id.frag_base_viewPager)
+//    @BindView(R.id.frag_base_viewPager)
     ViewPager mViewPager;
-    Unbinder unbinder;
+//    Unbinder unbinder;
     private boolean mIsBackground = false;
     private int mCurrentSelectPosition = 0;
     @Inject
     BaseMainPresenter mBaseMainPresenter;
 
+
+    protected View mView;
     private BaseMainFragmentAdapter mBaseMainFragmentAdapter;
     private FragmentManager mFragmentManager;
     private ArrayList<HashMap<String,String>> list;
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        EventBus.getDefault().register(this);
         super.onCreate(savedInstanceState);
 
     }
@@ -74,7 +73,7 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
         super.onAttach(context);
         mFragmentManager = getChildFragmentManager();
         list=new ArrayList<>();
-        mBaseMainFragmentAdapter = new BaseMainFragmentAdapter(mFragmentManager, list, getCategoryType());
+        mBaseMainFragmentAdapter = new BaseMainFragmentAdapter(mFragmentManager, list, setFragMentType());
     }
 
     public BaseMainFragment() {
@@ -86,7 +85,9 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_base_main, container, false);
+        mView=inflater.inflate(R.layout.fragment_base_main, container, false);
+//        unbinder = ButterKnife.bind(this,mView);
+        return  mView;
     }
 
 
@@ -98,7 +99,7 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     }
 
     @Override
-    public void onLoadAllCategoryData(List<HashMap<String, String>> categoryList) {
+    public void onLoadAllFragMentViewFinish(List<HashMap<String, String>> categoryList) {
         list.clear();
         list.addAll(categoryList);
         mBaseMainFragmentAdapter.notifyDataSetChanged();
@@ -107,10 +108,10 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        unbinder = ButterKnife.bind(this, view);
-//        Drawable dropDownDrawable = ResourceUtil.tintList(context, R.drawable.ic_arrow_drop_down_black_24dp, R.color.white);
-//        mIvSortCategory.setImageDrawable(dropDownDrawable);
-//        mIvSortCategory.setOnClickListener(this);
+
+        mTabLayout=mView.findViewById(R.id.frag_base_tabLayout);
+        mViewPager=mView.findViewById(R.id.frag_base_viewPager);
+
         mBaseMainFragmentAdapter.setDestroy(isNeedDestroy());
         mViewPager.setAdapter(mBaseMainFragmentAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -130,11 +131,10 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
 
             }
         });
-        presenter.loadAllCategoryData(getCategoryType());
+        presenter.loadOneFragMentData(setFragMentType());
 
     }
-    public abstract int getCategoryType();
-    public abstract ArrayList<HashMap<String,String>> getCategoryList();
+    public abstract int setFragMentType();
     public boolean isNeedDestroy() {
         return false;
     }
@@ -160,7 +160,7 @@ public abstract class BaseMainFragment extends MvpFragment<BaseMainView, BaseMai
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+//        unbinder.unbind();
     }
 
 
