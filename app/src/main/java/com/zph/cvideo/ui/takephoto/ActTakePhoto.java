@@ -50,14 +50,16 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Override
     public void initCamerFinsih( Camera mCamera) {
         this.mCamera=mCamera;
-//        String category="";
+        String category="pic_";
 //        boolean pullToRefresh=false;
-//        mTakePhotoProsenter.loadPicEffectLay(category.getCategoryValue(),false);
+        mTakePhotoProsenter.loadPicEffectLay(category,false);
     }
 
     @Override
     public void showLoading(boolean b) {
-        mAlertDialog.show();
+        if(mAlertDialog!=null) {
+            mAlertDialog.show();
+        }
     }
 
     @Override
