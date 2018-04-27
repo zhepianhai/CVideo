@@ -12,6 +12,7 @@
        *.Camera开发
        *.OpenGLES开发
        *.Ffmpeg二次开发
+       *.JNI
 
       
 # 开发中......
