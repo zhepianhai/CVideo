@@ -8,7 +8,7 @@
        *.Material Design
        *.greendao数据库
        *.封装：FragMent结构、网络请求，数据库，缓存
-       *.RxJava系列
+       *.RxJava系列+Observable
        *.Camera开发
        *.OpenGLES开发
        *.Ffmpeg二次开发
