@@ -92,5 +92,11 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
         if(null!=butter){
             butter.unbind();
         }
+        if(mCamera!=null){
+            mCamera.setPreviewCallback(null) ;
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+        }
     }
 }
