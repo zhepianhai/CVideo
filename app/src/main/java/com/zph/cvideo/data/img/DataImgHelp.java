@@ -1,6 +1,7 @@
 package com.zph.cvideo.data.img;
 
 import android.graphics.Bitmap;
+import android.hardware.Camera;
 
 /**
  *
@@ -10,4 +11,7 @@ import android.graphics.Bitmap;
 public interface DataImgHelp {
 
     Bitmap takePhotoByCamer(String string);
+
+    Camera initCamra();
+
 }

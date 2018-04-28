@@ -1,6 +1,7 @@
 package com.zph.cvideo.data.img;
 
 import android.graphics.Bitmap;
+import android.hardware.Camera;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -23,5 +24,18 @@ public class AppDataImgHelp  implements DataImgHelp{
     public Bitmap takePhotoByCamer(String string) {
         Bitmap bitmap=null;
         return bitmap;
+    }
+
+    @Override
+    public Camera initCamra() {
+        Camera camera=null;
+        try {
+
+            camera = Camera.open(0);
+            camera.startPreview();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return camera;
     }
 }

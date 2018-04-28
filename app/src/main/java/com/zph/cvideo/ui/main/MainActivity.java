@@ -39,6 +39,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_DEFAULT;
 import static com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED;
@@ -59,7 +60,7 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
     FloatingActionButton mFabSearch;
     @BindView(R.id.content_main_framelay)
     FrameLayout mContent;
-
+    Unbinder butter;
     @Inject
     MainPresenter mainPresenter;
     private Fragment mCurrentFragment;
@@ -76,7 +77,7 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        butter = ButterKnife.bind(this);
 
         mFragmentManager = getSupportFragmentManager();
         mSelectIndex = getIntent().getIntExtra(CONST_QUERY.KEY_SELECT_INDEX, 0);
@@ -287,5 +288,13 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(null!=butter){
+            butter.unbind();
+        }
+    }
 
 }

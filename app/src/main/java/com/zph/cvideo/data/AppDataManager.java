@@ -1,6 +1,7 @@
 package com.zph.cvideo.data;
 
 import android.graphics.Bitmap;
+import android.hardware.Camera;
 
 import com.zph.cvideo.data.db.DbHelper;
 import com.zph.cvideo.data.img.DataImgHelp;
@@ -46,6 +47,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Bitmap takePhotoByCamer(String string) {
         return mDataImgHelp.takePhotoByCamer(string);
+    }
+
+    @Override
+    public Camera initCamra() {
+        return mDataImgHelp.initCamra();
     }
 
     @Override

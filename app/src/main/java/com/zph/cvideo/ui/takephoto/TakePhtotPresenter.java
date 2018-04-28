@@ -33,11 +33,13 @@ public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implemen
     }
 
     @Override
-    public void initCamera(final Camera camera) {
+    public void initCamera(Camera camera) {
+
+
         ifViewAttached(new ViewAction<TakePhotoView>() {
             @Override
             public void run(@NonNull TakePhotoView view) {
-                view.initCamerFinsih(camera);
+                view.initCamerFinsih(mDataManager.initCamra());
             }
         });
     }

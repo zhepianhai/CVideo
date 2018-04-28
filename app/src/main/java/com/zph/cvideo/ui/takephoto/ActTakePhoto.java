@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zph.cvideo.R;
@@ -18,9 +20,17 @@ import com.zph.cvideo.utils.UtilCamera;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>  implements  TakePhotoView{
 
+    @BindView(R.id.act_take_photo_camear_view)
+    FrameLayout mFrameLayCamear;
+    @BindView(R.id.act_take_photo_effect_layout)
+    LinearLayout mLinearLayEffect;
+
+    Unbinder butter;
     MyCameraView mCameraView;
     private Camera mCamera;
     private AlertDialog mAlertDialog;
@@ -34,6 +44,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_take_photo);
+        butter = ButterKnife.bind(this);
         setStatusBarColor(getResources().getColor(R.color.white));
         if(UtilCamera.isCameraRuning(getApplicationContext())){
             mTakePhotoProsenter.initCamera(mCamera);
@@ -49,10 +60,16 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     }
     @Override
     public void initCamerFinsih( Camera mCamera) {
+        if(mCamera==null){
+            return;
+        }
+
         this.mCamera=mCamera;
-        String category="pic_";
+        mCameraView=new MyCameraView(this,mCamera);
+        mFrameLayCamear.addView(mCameraView);
+//        String category="pic_";
 //        boolean pullToRefresh=false;
-        mTakePhotoProsenter.loadPicEffectLay(category,false);
+//        mTakePhotoProsenter.loadPicEffectLay(category,false);
     }
 
     @Override
@@ -66,6 +83,14 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     public void dismissDialog() {
         if (mAlertDialog != null && mAlertDialog.isShowing() && !isFinishing()) {
             mAlertDialog.dismiss();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(null!=butter){
+            butter.unbind();
         }
     }
 }
