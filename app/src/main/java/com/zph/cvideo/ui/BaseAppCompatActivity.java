@@ -15,6 +15,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.jaeger.library.StatusBarUtil;
 import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
@@ -55,13 +57,15 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
         initSwipeBackFinish();
         context = this;
     }
+
     public ActivityComponent getActivityComponent() {
         return mActivityComponent;
     }
+
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+//        setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     /**
@@ -92,6 +96,7 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     public void onSwipeBackLayoutCancel() {
 
     }
+
     /**
      * 滑动返回执行完毕，销毁当前 Activity
      */
@@ -99,6 +104,7 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     public void onSwipeBackLayoutExecuted() {
         mSwipeBackHelper.swipeBackward();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -153,6 +159,14 @@ public class BaseAppCompatActivity extends AppCompatActivity implements BGASwipe
     public void setStatusBarColor(@ColorInt int color, @IntRange(from = 0, to = 255) int statusBarAlpha) {
         StatusBarUtil.setColorForSwipeBack(this, color, statusBarAlpha);
     }
+
+    public void setStatusBarTransparent() {
+//        setStatusBarColor(Color.TRANSPARENT, 0);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);// 隐藏标题
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
+    }
+
     protected void initToolBar(Toolbar toolbar) {
         if (toolbar == null) {
             return;

@@ -1,5 +1,6 @@
 package com.zph.cvideo.utils;
 
+import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,6 +15,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.zph.cvideo.R;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @author zph
@@ -77,5 +81,67 @@ public class SizeUtil {
     static int dip2px(float dpValue, AppCompatActivity activity) {
         final float scale = activity.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
+    }
+
+
+    /**
+     * Camera size转换
+     *
+     * */
+    public static Camera.Size getPreviewSize(List<Camera.Size> list, int th){
+        CameraSizeComparator sizeComparator = new CameraSizeComparator();
+        Collections.sort(list, sizeComparator);
+
+        int i = 0;
+        for(Camera.Size s:list){
+            if((s.width > th) && equalRate(s, 1.33f)){
+                break;
+            }
+            i++;
+        }
+        return list.get(i);
+    }
+
+    public static Camera.Size getPictureSize(List<Camera.Size> list, int th){
+        CameraSizeComparator sizeComparator = new CameraSizeComparator();
+        Collections.sort(list, sizeComparator);
+
+        int i = 0;
+        for(Camera.Size s:list){
+            if((s.width > th) && equalRate(s, 1.33f)){
+                break;
+            }
+            i++;
+        }
+
+        return list.get(i);
+    }
+
+    public static boolean equalRate(Camera.Size s, float rate){
+        float r = (float)(s.width)/(float)(s.height);
+        if(Math.abs(r - rate) <= 0.2)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static class CameraSizeComparator implements Comparator<Camera.Size> {
+        //按升序排列
+        public int compare(Camera.Size lhs, Camera.Size rhs) {
+            // TODO Auto-generated method stub
+            if(lhs.width == rhs.width){
+                return 0;
+            }
+            else if(lhs.width > rhs.width){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+
     }
 }

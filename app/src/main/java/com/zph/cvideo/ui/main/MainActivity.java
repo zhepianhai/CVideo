@@ -69,9 +69,6 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
     private FragMore  mFragMore;
     private FragmentManager mFragmentManager;
     private int mSelectIndex;
-    private int mPermisionCode = 300;
-    private int mPermisionReqCode = 400;
-    private String[] mPermission = PermissionConstants.getPermissions(PermissionConstants.STORAGE);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,7 +82,6 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
             mSelectIndex = savedInstanceState.getInt(CONST_QUERY.KEY_SELECT_INDEX);
         }
         initBottomNavigationBar(mSelectIndex);
-        makeDirAndCheckPermision();
         mFabSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,65 +199,8 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
         }
     }
 
-    /**
-     * 申请权限并创建下载目录
-     */
-    private void makeDirAndCheckPermision() {
-        if (!AndPermission.hasPermission(MainActivity.this, mPermission)) {
-            AndPermission.with(this)
-                    .requestCode(mPermisionCode)
-                    .permission(mPermission)
-                    .rationale(new RationaleListener() {
-                        @Override
-                        public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
-                            // 此对话框可以自定义，调用rationale.resume()就可以继续申请。
-                            AndPermission.rationaleDialog(MainActivity.this, rationale).show();
-                        }
-                    })
-                    .callback(listener)
-                    .start();
-        }
-    }
-    private PermissionListener listener = new PermissionListener() {
-        File file = new File(SDCardUtils.DOWNLOAD_VIDEO_PATH);
 
-        @Override
-        public void onSucceed(int requestCode, @NonNull List<String> grantedPermissions) {
-            // 权限申请成功回调。
 
-            // 这里的requestCode就是申请时设置的requestCode。
-            // 和onActivityResult()的requestCode一样，用来区分多个不同的请求。
-            if (requestCode == mPermisionCode) {
-                // TODO ...
-                if (AndPermission.hasPermission(MainActivity.this, grantedPermissions)) {
-                    if (!file.exists()) {
-                        if (!file.mkdirs()) {
-//                            showMessage("创建下载目录失败了", TastyToast.ERROR);
-                        }
-                    }
-                } else {
-                    AndPermission.defaultSettingDialog(MainActivity.this, mPermisionReqCode).show();
-                }
-            }
-        }
-
-        @Override
-        public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
-            // 权限申请失败回调。
-            if (requestCode == mPermisionCode) {
-                // TODO ...
-                if (!AndPermission.hasPermission(MainActivity.this, deniedPermissions)) {
-                    // 是否有不再提示并拒绝的权限。
-                    if (AndPermission.hasAlwaysDeniedPermission(MainActivity.this, deniedPermissions)) {
-                        // 第一种：用AndPermission默认的提示语。
-                        AndPermission.defaultSettingDialog(MainActivity.this, mPermisionReqCode).show();
-                    } else {
-                        AndPermission.defaultSettingDialog(MainActivity.this, mPermisionReqCode).show();
-                    }
-                }
-            }
-        }
-    };
     private void hideFloatingActionButton(FloatingActionButton fabSearch) {
         ViewGroup.LayoutParams layoutParams = fabSearch.getLayoutParams();
         if (layoutParams != null && layoutParams instanceof CoordinatorLayout.LayoutParams) {

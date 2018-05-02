@@ -25,7 +25,6 @@ import io.reactivex.disposables.Disposable;
 
 public class TakePhtotPresenter extends MvpBasePresenter<TakePhotoView> implements ITakePhoto {
     private DataManager mDataManager;
-//    private LifecycleProvider<Lifecycle.Event> provider;
     @Inject
     public TakePhtotPresenter(LifecycleProvider<Lifecycle.Event> provider, DataManager dataManager) {
         super(provider);

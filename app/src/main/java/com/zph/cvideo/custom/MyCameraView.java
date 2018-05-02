@@ -1,7 +1,9 @@
 package com.zph.cvideo.custom;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.hardware.Camera;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -57,8 +59,14 @@ public class MyCameraView  extends SurfaceView implements SurfaceHolder.Callback
         } catch (Exception e){
         }
         try {
-            mCamera.setPreviewDisplay(mHolder);
+            Camera.Parameters objParam = mCamera.getParameters();
+            //设置对焦模式为持续对焦，（最好先判断一下手机是否有这个对焦模式，有些手机没有会报错的）
+            objParam.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            mCamera.setDisplayOrientation(90);
+            mCamera.setParameters(objParam);
             mCamera.startPreview();
+
+
         } catch (Exception e){
         }
     }
@@ -67,4 +75,6 @@ public class MyCameraView  extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
+
+
 }
