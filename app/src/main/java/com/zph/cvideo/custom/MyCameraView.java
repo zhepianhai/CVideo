@@ -5,20 +5,23 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.zph.cvideo.utils.SizeUtil;
 
 import java.io.IOException;
 
 /**
- * Created by 3119 on 2018/4/11.
+ * @author zph
+ * @date 2018/4/11
  */
-
 public class MyCameraView  extends SurfaceView implements SurfaceHolder.Callback{
     private Context mContext;
     private SurfaceHolder mHolder;
     private Camera mCamera;
-
+    private Camera.Parameters mParameters;
     public MyCameraView(Context context,Camera mCamera) {
         this(context,null,mCamera);
     }
@@ -31,6 +34,7 @@ public class MyCameraView  extends SurfaceView implements SurfaceHolder.Callback
         super(context, attrs, defStyleAttr);
         this.mContext=context;
         this.mCamera=mCamera;
+        this.mParameters=mCamera.getParameters();
         initVar();
     }
 
@@ -59,11 +63,7 @@ public class MyCameraView  extends SurfaceView implements SurfaceHolder.Callback
         } catch (Exception e){
         }
         try {
-            Camera.Parameters objParam = mCamera.getParameters();
-            //设置对焦模式为持续对焦，（最好先判断一下手机是否有这个对焦模式，有些手机没有会报错的）
-            objParam.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-            mCamera.setDisplayOrientation(90);
-            mCamera.setParameters(objParam);
+
             mCamera.startPreview();
 
 
