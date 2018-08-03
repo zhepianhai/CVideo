@@ -36,18 +36,12 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
     private void initVar() {
         setStatusBarColor(getResources().getColor(R.color.colorHome));
     }
-
     private void initView() {
         this.setNavBtnRightType(MvpActivity.NAVBTNRIGHT_TYPE_HOME);
         mNavTxtTitle.setText(this.getString(R.string.app_act_video_clip));
-
         // Main
         LinearLayout layShow = (LinearLayout) LinearLayout.inflate(this, R.layout.activity_act_video_clip, null);
         mViewMain.addView(layShow, new LinearLayout.LayoutParams(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.FILL_PARENT));
-
-
-
-
     }
 
     @NonNull
