@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_takephoto">拍照</string>
+    <string name="title_clip">剪辑视频</string>
+
+    <string name="app_act_video_clip">剪辑视频</string>
+    <string name="app_act_pic_take">拍照</string>
+
+
+
+</resources>

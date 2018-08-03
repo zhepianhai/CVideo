@@ -24,14 +24,14 @@ import java.util.HashMap;
 public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
 
     private static final String TAG = BaseMainFragmentAdapter.class.getSimpleName();
-    private ArrayList<HashMap<String,String>> categoryList;
+    private ArrayList<HashMap<String, String>> categoryList;
     private int categoryType;
     private FragmentTransaction mCurTransaction;
     private FragmentManager mFragmentManager;
 
     private boolean isDestroy = false;
 
-    public BaseMainFragmentAdapter(FragmentManager fm, ArrayList<HashMap<String,String>> categoryList, int categoryType) {
+    public BaseMainFragmentAdapter(FragmentManager fm, ArrayList<HashMap<String, String>> categoryList, int categoryType) {
         super(fm);
         mFragmentManager = fm;
         this.categoryList = categoryList;
@@ -57,7 +57,6 @@ public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
     }
 
 
-
     @Override
     public CharSequence getPageTitle(int position) {
         return categoryList.get(position).get(Constants.CATGORY_TITLE);
@@ -69,27 +68,22 @@ public class BaseMainFragmentAdapter extends FragmentPagerAdapter {
     }
 
     private Fragment buildFragmentItem(int type, int position) {
-        HashMap<String,String> category = categoryList.get(position);
-        int types=Integer.valueOf(category.get(Constants.CATGORY_TYPE));
-        if(type==Constants.HOME) {
-            switch (types) {
-                case Constants.HOME_PICTURE:
-                    if (Constants.HOME_PICTURE == Integer.valueOf(category.get(Constants.CATGORY_TYPE))) {
-                        FragPicture picFragment = FragPicture.getInstance();
-                        return picFragment;
-                    } else if (Constants.HOME_VIDEO == Integer.valueOf(category.get(Constants.CATGORY_TYPE))) {
-                        FragVideo picFragment = FragVideo.getInstance();
-                        return picFragment;
-                    } else {
-                        FragAudio picFragment = FragAudio.getInstance();
-                        return picFragment;
-                    }
+        HashMap<String, String> category = categoryList.get(position);
+        int typeId = Integer.valueOf(category.get(Constants.CATGORY_TYPE));
+        if (type == Constants.HOME) {
+            switch (typeId) {
+                case Constants.HOME_PIC:
+                    return FragPicture.getInstance();
+                case Constants.HOME_VIDEO:
+                    return FragVideo.getInstance();
+                case Constants.HOME_AUDIO:
+                    return FragAudio.getInstance();
+
             }
-        }
-        else if(type==Constants.INFO){
+        } else if (type == Constants.INFO) {
 
         }
-        return  new Fragment();
+        return new Fragment();
     }
 
     @SuppressLint("CommitTransaction")

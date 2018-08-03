@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/frame_main_bg"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/root_lay_nav"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/x40"
+        android:background="@color/colorHome"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/nav_btn_left"
+            android:minWidth="@dimen/x20"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x20"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_icoon_back_white_24"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_toLeftOf="@+id/nav_btn_right"
+            android:layout_toRightOf="@+id/nav_btn_left"
+            android:id="@+id/nav_txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/x5"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_toStartOf="@+id/nav_btn_right"
+            android:layout_toEndOf="@+id/nav_btn_left" />
+
+        <Button
+            android:id="@+id/nav_btn_right"
+            android:minWidth="@dimen/x20"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x20"
+            android:layout_margin="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:background="@android:color/transparent"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/root_lay_show"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/root_lay_nav"
+        android:orientation="vertical" />
+</RelativeLayout>

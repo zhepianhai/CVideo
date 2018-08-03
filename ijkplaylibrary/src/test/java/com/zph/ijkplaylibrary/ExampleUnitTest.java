@@ -1,4 +1,4 @@
-package zph.com.exolibrary;
+package com.zph.ijkplaylibrary;
 
 import org.junit.Test;
 

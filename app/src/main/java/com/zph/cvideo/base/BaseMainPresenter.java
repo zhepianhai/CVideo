@@ -46,8 +46,8 @@ public class BaseMainPresenter extends MvpBasePresenter<BaseMainView> implements
                 typesNamed=Constants.HOMETABLNAMES;
                 types=Constants.HOMETABLTYPES;
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
         if(null==typesNamed){
             return  null;

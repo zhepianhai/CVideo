@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -23,8 +24,6 @@ import com.zph.cvideo.ui.MvpActivity;
 import com.zph.cvideo.utils.DialogUtils;
 import com.zph.cvideo.utils.UtilCamera;
 import com.zph.cvideo.utils.constants.PermissionConstants;
-import com.zph.lib.camearlibrary.ZPHCameraView;
-import com.zph.lib.camearlibrary.listener.ZPHCameraListener;
 
 import java.io.File;
 import java.util.List;
@@ -43,8 +42,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Inject
     TakePhtotPresenter mTakePhotoProsenter;
 
-    @BindView(R.id.act_take_photo_zphcamearview)
-    ZPHCameraView mZPHCameraView;
+
     private boolean granted = false;
     private int mPermisionCode = 300;
     private int mPermisionReqCode = 400;
@@ -54,38 +52,24 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_act_take_photo);
         butter = ButterKnife.bind(this);
+        this.initView();
         makeCaneraPermision();
         mAlertDialog = DialogUtils.initLodingDialog(this, "加載中");
     }
+
+    private void initView() {
+        this.setNavBtnRightType(MvpActivity.NAVBTNRIGHT_TYPE_HOME);
+        mNavTxtTitle.setText(this.getString(R.string.app_act_pic_take));
+
+        // Main
+        LinearLayout layShow = (LinearLayout) LinearLayout.inflate(this, R.layout.activity_act_take_photo, null);
+        mViewMain.addView(layShow, new LinearLayout.LayoutParams(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.FILL_PARENT));
+
+    }
+
     private  void initCameraView() {
-        if(UtilCamera.isCameraRuning(getApplicationContext())){
-            //设置视频保存路径
-            mZPHCameraView.setSaveVideoPath(Environment.getExternalStorageDirectory().getPath() + File.separator + "ZPHCamera");
 
-            //JCameraView监听
-            mZPHCameraView.setJCameraLisenter(new ZPHCameraListener() {
-                @Override
-                public void captureSuccess(Bitmap bitmap) {
-                    //获取图片bitmap
-                    Log.i("JCameraView", "bitmap = " + bitmap.getWidth());
-                }
-
-                @Override
-                public void recordSuccess(String url, Bitmap firstFrame) {
-
-                }
-
-
-                @Override
-                public void quit() {
-                    //退出按钮
-                    ActTakePhoto.this.finish();
-                }
-            });
-        }
     }
 
     @Override
@@ -96,15 +80,13 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     @Override
     protected void onResume() {
         super.onResume();
-        if (granted) {
-            mZPHCameraView.onResume();
-        }
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mZPHCameraView.onPause();
+
     }
     @NonNull
     @Override
@@ -154,7 +136,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
                     .start();
         }else{
             this.initCameraView();
-            mZPHCameraView.onResume();
+
         }
     }
     private PermissionListener listener = new PermissionListener() {
@@ -168,7 +150,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
                 if (AndPermission.hasPermission(ActTakePhoto.this, grantedPermissions)) {
                     ActTakePhoto.this.initCameraView();
                     granted = true;
-                    mZPHCameraView.onResume();
+
                 } else {
                     granted = false;
                     AndPermission.defaultSettingDialog(ActTakePhoto.this, mPermisionReqCode).show();

@@ -299,7 +299,8 @@ public class CaptureLayout extends FrameLayout {
         else
             btn_return.setVisibility(VISIBLE);
         if (this.iconRight != 0)
-            iv_custom_right.setVisibility(VISIBLE);
+
+            iv_custom_right.setVisibility(GONE);
     }
 
 

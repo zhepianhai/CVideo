@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
-import com.devbrackets.android.exomedia.util.ResourceUtil;
 import com.zph.cvideo.R;
 import com.zph.cvideo.adpter.BaseMainFragmentAdapter;
 import com.zph.cvideo.ui.MvpFragment;

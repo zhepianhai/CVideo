@@ -4,8 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Zph_CV_Viedo.iml" filepath="$PROJECT_DIR$/Zph_CV_Viedo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/camearlibrary/camearlibrary.iml" filepath="$PROJECT_DIR$/camearlibrary/camearlibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/exolibrary/exolibrary.iml" filepath="$PROJECT_DIR$/exolibrary/exolibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ijkplaylibrary/ijkplaylibrary.iml" filepath="$PROJECT_DIR$/ijkplaylibrary/ijkplaylibrary.iml" />
     </modules>
   </component>
 </project>

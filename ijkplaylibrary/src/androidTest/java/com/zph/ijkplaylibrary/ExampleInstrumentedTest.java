@@ -1,4 +1,4 @@
-package zph.com.exolibrary;
+package com.zph.ijkplaylibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("zph.com.exolibrary.test", appContext.getPackageName());
+        assertEquals("com.zph.ijkplaylibrary.test", appContext.getPackageName());
     }
 }

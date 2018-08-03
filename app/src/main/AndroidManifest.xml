@@ -4,8 +4,10 @@
     package="com.zph.cvideo">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -35,7 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.takephoto.ActTakePhoto"></activity>
+        <activity android:name=".ui.takephoto.ActTakePhoto" />
+        <activity android:name=".ui.clip.ActVideoClip"></activity>
     </application>
 
 </manifest>

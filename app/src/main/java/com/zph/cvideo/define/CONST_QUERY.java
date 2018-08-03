@@ -8,4 +8,6 @@ package com.zph.cvideo.define;
 public class CONST_QUERY {
 
     public final static String KEY_SELECT_INDEX = "key_select_index";
+
+
 }

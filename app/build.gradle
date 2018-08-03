@@ -70,12 +70,12 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.2'
     // To use Gson
     compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
-    implementation project(':exolibrary')
     //permission
     compile 'com.yanzhenjie:permission:1.1.2'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     //theme
     compile 'com.qmuiteam:qmui:1.0.6'
-    implementation files('libs/HTPDA_6.0_Publish.jar')
-    implementation project(':camearlibrary')
+
+
+    compile 'com.devbrackets.android:exomedia:4.1.0'
 }

@@ -51,7 +51,7 @@ public class FragPicture extends BaseMainFragment {
     }
     @Override
     public int  setFragMentType() {
-        return Constants.HOME_PICTURE;
+        return Constants.HOME_PIC;
     }
 
     @Override

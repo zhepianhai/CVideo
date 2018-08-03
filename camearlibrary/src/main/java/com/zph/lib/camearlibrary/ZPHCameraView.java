@@ -26,6 +26,7 @@ import android.widget.VideoView;
 import com.zph.lib.camearlibrary.listener.CaptureListener;
 import com.zph.lib.camearlibrary.listener.ClickListener;
 import com.zph.lib.camearlibrary.listener.ErrorListener;
+import com.zph.lib.camearlibrary.listener.ReturnListener;
 import com.zph.lib.camearlibrary.listener.TypeListener;
 import com.zph.lib.camearlibrary.listener.ZPHCameraListener;
 import com.zph.lib.camearlibrary.state.CameraMachine;
@@ -232,14 +233,14 @@ public class ZPHCameraView extends FrameLayout implements CameraInterface.Camera
             }
         });
         //退出
-//        mCaptureLayout.setReturnLisenter(new ReturnListener() {
-//            @Override
-//            public void onReturn() {
-//                if (jCameraLisenter != null) {
-//                    jCameraLisenter.quit();
-//                }
-//            }
-//        });
+        mCaptureLayout.setReturnLisenter(new ReturnListener() {
+            @Override
+            public void onReturn() {
+                if (jCameraLisenter != null) {
+                    jCameraLisenter.quit();
+                }
+            }
+        });
         mCaptureLayout.setLeftClickListener(new ClickListener() {
             @Override
             public void onClick() {
