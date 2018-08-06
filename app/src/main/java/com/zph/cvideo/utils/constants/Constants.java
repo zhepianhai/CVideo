@@ -19,6 +19,9 @@ public class Constants {
     public static final int INFO=2000;
     public static final int MORE=3000;
 
+    public static final int IMAGE_TYPE=1;
+    public static final int VIDEO_TYPE=2;
+
     public static final String CATGORY_TITLE="category_title";
     public static final String CATGORY_TYPE="category_type";
     public static final String CATGORY_ID="category_id";

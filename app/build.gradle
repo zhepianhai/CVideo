@@ -12,6 +12,15 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
 
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+            ndk {
+                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -19,6 +28,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    productFlavors {
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

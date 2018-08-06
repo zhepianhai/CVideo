@@ -4,8 +4,10 @@
     <string name="title_clip">剪辑视频</string>
 
     <string name="app_act_video_clip">剪辑视频</string>
+
     <string name="app_act_pic_take">拍照</string>
 
 
+    <string name="app_toast_no_cache">暂无外部存储</string>
 
 </resources>

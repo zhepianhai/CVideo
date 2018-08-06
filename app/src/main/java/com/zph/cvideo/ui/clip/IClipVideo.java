@@ -1,8 +1,13 @@
 package com.zph.cvideo.ui.clip;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
+ * @author zph
  * Created by zph on 2018/8/3.
  */
 
-public interface IClipVideo {
+ interface IClipVideo {
+    void loadAudioFiled();
 }

@@ -17,6 +17,8 @@ import com.zph.cvideo.data.network.ApiHelper;
 import com.zph.cvideo.data.network.AppApiHelper;
 import com.zph.cvideo.data.network.prefs.AppPreferencesHelper;
 import com.zph.cvideo.data.network.prefs.PreferencesHelper;
+import com.zph.cvideo.data.video.AppDataVideoHelp;
+import com.zph.cvideo.data.video.DataVideoHelp;
 import com.zph.cvideo.inject.ApplicationContext;
 import com.zph.cvideo.inject.DatabaseInfo;
 import com.zph.cvideo.inject.PreferenceInfo;
@@ -101,6 +103,12 @@ public class ApplicationModule {
     @Provides
     DataImgHelp providesDataImgHelp(AppDataImgHelp appDataImgHelp) {
         return appDataImgHelp;
+    }
+
+    @Singleton
+    @Provides
+    DataVideoHelp providesDataVideoHelp(AppDataVideoHelp appDataVideoHelp) {
+        return appDataVideoHelp;
     }
 
 
