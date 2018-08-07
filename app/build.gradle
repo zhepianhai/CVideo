@@ -92,4 +92,6 @@ dependencies {
     //theme
     compile 'com.qmuiteam:qmui:1.0.6'
     compile 'com.devbrackets.android:exomedia:4.1.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    implementation files('libs/HTPDA_6.1_Publish.jar')
 }

@@ -6,20 +6,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.zph.cvideo.ui.clip.ActVideoClip">
-    <GridView
-        android:layout_marginTop="@dimen/x1"
-        android:id="@+id/act_video_cilp_gridview"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:numColumns="3"
-        android:gravity="center"
-        android:horizontalSpacing="@dimen/x1"
-        android:verticalSpacing="@dimen/x1"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </GridView>
-    <android.support.v7.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:text="@string/title_canle"
-        android:textSize="14sp"
-        android:layout_height="@dimen/x48" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/act_video_clip_lay_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <GridView
+                android:id="@+id/act_video_cilp_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/x1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:horizontalSpacing="@dimen/x1"
+                android:numColumns="3"
+                android:verticalSpacing="@dimen/x1"></GridView>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x48"
+                android:text="@string/title_canle"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_video_clip_lay_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

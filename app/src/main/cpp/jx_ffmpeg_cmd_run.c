@@ -15,7 +15,7 @@
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 
 JNIEXPORT jint JNICALL
-Java_com_esay_ffmtool_FfmpegTool_cmdRun(JNIEnv *env, jobject type,
+Java_com_zph_cvideo_ffmpeng_FfmpegTool_cmdRun(JNIEnv *env, jobject type,
                                         jobjectArray commands) {
     int argc = (*env)->GetArrayLength(env, commands);
     char *argv[argc];
@@ -24,7 +24,7 @@ Java_com_esay_ffmtool_FfmpegTool_cmdRun(JNIEnv *env, jobject type,
         jstring js = (jstring) (*env)->GetObjectArrayElement(env, commands, i);
         argv[i] = (char *) (*env)->GetStringUTFChars(env, js, 0);
     }
-    LOGD("Java_com_zph_cvideo_ffmepeg_FfmpegTool_cmdRun:");
+    LOGD("Java_com_zph_cvideo_ffmpeng_FfmpegTool_cmdRun:");
     return jxRun(argc, argv);
 }
 
@@ -37,7 +37,7 @@ Java_com_mabeijianxi_jianxiffmpegcmd_MainActivity_getFFmpegConfig(JNIEnv *env, j
 
 }
 
-JNIEXPORT jint JNICALL Java_com_esay_ffmtool_FfmpegTool_decodToImage
+JNIEXPORT jint JNICALL Java_com_zph_cvideo_ffmpeng_FfmpegTool_decodToImage
         (JNIEnv *env, jclass mclass, jstring in, jstring dir, jint startTime, jint num) {
 
     char *input = jstringTostring(env, in);
@@ -171,11 +171,11 @@ JNIEXPORT jint JNICALL Java_com_esay_ffmtool_FfmpegTool_decodToImage
  * @param num
  * @return
  */
-JNIEXPORT jint JNICALL Java_com_esay_ffmtool_FfmpegTool_decodToImageWithCall
+JNIEXPORT jint JNICALL Java_com_zph_cvideo_ffmpeng_FfmpegTool_decodToImageWithCall
         (JNIEnv *env, jobject mclass, jstring in, jstring dir, jint startTime, jint num) {
     char *input = jstringTostring(env, in);
     char *parent = jstringTostring(env, dir);
-    jclass clazz =(*env)->FindClass(env,"com/esay/ffmtool/FfmpegTool");
+    jclass clazz =(*env)->FindClass(env,"com//zph/cvideo/ffmpeng/FfmpegTool");
     if(clazz == 0){
         LOGD("find class error");
         return -1;

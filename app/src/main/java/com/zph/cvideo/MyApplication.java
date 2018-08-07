@@ -2,6 +2,7 @@ package com.zph.cvideo;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
 import com.zph.cvideo.inject.component.ApplicationComponent;
 import com.zph.cvideo.inject.component.DaggerApplicationComponent;
 import com.zph.cvideo.inject.model.ApplicationModule;
@@ -26,7 +27,10 @@ public class MyApplication  extends Application{
         applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
         applicationComponent.inject(this);
         BGASwipeBackHelper.init(this, null);
-
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public static MyApplication getInstance() {

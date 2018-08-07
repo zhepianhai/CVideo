@@ -42,6 +42,8 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
     @Inject
     ClipVideoPresenter mTakePhotoProsenter;
 
+
+    private LinearLayout mLayList;
     GridView mGridView;
     private AdpGridView mAdpGridView;
     private ArrayList<HashMap<String,String>> mArrayData;
@@ -72,6 +74,7 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         LinearLayout layShow = (LinearLayout) LinearLayout.inflate(this, R.layout.activity_act_video_clip, null);
         mViewMain.addView(layShow, new LinearLayout.LayoutParams(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.FILL_PARENT));
 
+        mLayList=this.findViewById(R.id.act_video_clip_lay_list);
         mGridView=this.findViewById(R.id.act_video_cilp_gridview);
         mAdpGridView=new AdpGridView(this,mArrayData,R.layout.item_grid_video);
         mGridView.setAdapter(mAdpGridView);
@@ -180,9 +183,7 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         String basePath = Environment.getExternalStorageDirectory().getPath();
                 String videoPath=mArrayData.get(position).get(CONST_QUERY.VIDEO_IMAGE_PATH);
         String dir=basePath+ File.separator+"test"+File.separator;
-        String out=dir+"out.mp4";
-        String cmd2=String.format("ffmpeg -ss 10"+" -t 10 -i "+videoPath
-                +" -vcodec copy -acodec copy "+out);
+        String cmd2 = String.format("ffmpeg -ss 00:00:10 -i "+ videoPath+" -f image2 -y  "+basePath+"/test.jpg");
         String regulation="[ \\t]+";
         Log.i("MainActivity","cmd2:"+cmd2);
         final String[] split2 = cmd2.split(regulation);
