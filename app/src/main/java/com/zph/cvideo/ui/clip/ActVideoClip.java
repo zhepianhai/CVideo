@@ -49,6 +49,8 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
     private ArrayList<HashMap<String,String>> mArrayData;
     private Dialog mDialog;
 
+    private LinearLayout mLayVideo;
+
     private boolean granted = false;
     private int mPermisionCode = 300;
     private int mPermisionReqCode = 400;
@@ -79,6 +81,14 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         mAdpGridView=new AdpGridView(this,mArrayData,R.layout.item_grid_video);
         mGridView.setAdapter(mAdpGridView);
         mGridView.setOnItemClickListener(this);
+
+        mLayVideo=this.findViewById(R.id.act_video_clip_lay_video);
+
+
+
+        mLayList.setVisibility(View.VISIBLE);
+        mLayVideo.setVisibility(View.GONE);
+
     }
     private void makeCaneraPermision() {
         if (!AndPermission.hasPermission(ActVideoClip.this, mPermission)) {
