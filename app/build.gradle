@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.zph.cvideo"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -93,5 +93,8 @@ dependencies {
     compile 'com.qmuiteam:qmui:1.0.6'
     compile 'com.devbrackets.android:exomedia:4.1.0'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile 'com.github.kui92:FFmpegLibrary:3.2'
     implementation files('libs/HTPDA_6.1_Publish.jar')
 }

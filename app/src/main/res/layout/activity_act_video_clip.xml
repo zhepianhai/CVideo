@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/act_video_clip_lay_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,7 +27,9 @@
                 android:gravity="center"
                 android:horizontalSpacing="@dimen/x1"
                 android:numColumns="3"
-                android:verticalSpacing="@dimen/x1"></GridView>
+                android:verticalSpacing="@dimen/x1">
+
+            </GridView>
 
             <android.support.v7.widget.AppCompatButton
                 android:layout_width="match_parent"
@@ -35,13 +38,79 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/act_video_clip_lay_video"
             android:layout_width="match_parent"
+            android:background="@color/black"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/act_video_clip_lay_title"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x36">
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/ic_icoon_close_24"
+                    android:layout_width="@dimen/x24"
+                    android:layout_height="@dimen/x24" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/app_act_pic_take"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/shape_color_homes"
+                    android:layout_height="@dimen/x24">
+
+                </android.support.v7.widget.AppCompatButton>
+            </RelativeLayout>
 
 
-        </LinearLayout>
+            <FrameLayout
+
+                android:id="@+id/act_video_cilp_fram"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x60">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/act_video_cilp_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <com.zph.cvideo.custom.RangeBar
+                    android:id="@+id/act_video_cilp_rangeBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:tickCount="11"
+                    app:tickHeight="@dimen/x60">
+
+                </com.zph.cvideo.custom.RangeBar>
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_below="@+id/act_video_clip_lay_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/act_video_cilp_fram"
+                >
+
+                <VideoView
+                    android:id="@+id/act_video_cilp_VideoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+        </RelativeLayout>
     </FrameLayout>
 </LinearLayout>

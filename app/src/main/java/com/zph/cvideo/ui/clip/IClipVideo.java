@@ -10,4 +10,6 @@ import java.util.List;
 
  interface IClipVideo {
     void loadAudioFiled();
+    void initVideoView(String filePath);
+
 }

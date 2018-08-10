@@ -69,4 +69,10 @@ public class ClipVideoPresenter extends MvpBasePresenter<ClipVideoView> implemen
                     }
                 });
     }
+
+    //初始化video
+    @Override
+    public void initVideoView(String filePath) {
+
+    }
 }

@@ -175,7 +175,7 @@ JNIEXPORT jint JNICALL Java_com_zph_cvideo_ffmpeng_FfmpegTool_decodToImageWithCa
         (JNIEnv *env, jobject mclass, jstring in, jstring dir, jint startTime, jint num) {
     char *input = jstringTostring(env, in);
     char *parent = jstringTostring(env, dir);
-    jclass clazz =(*env)->FindClass(env,"com//zph/cvideo/ffmpeng/FfmpegTool");
+    jclass clazz =(*env)->FindClass(env,"com/zph/cvideo/ffmpeng/FfmpegTool");
     if(clazz == 0){
         LOGD("find class error");
         return -1;

@@ -9,6 +9,10 @@ package com.zph.cvideo.utils.constants;
 public class Constants {
     public static final String DB_NAME = "zph_cvideo";
 
+    public static final String FILE_PATH="CVIDEO";
+    public static final String FILE_VIDEO_CLIP_PARENT="VIDEO_CLIP_P";
+    public static final String FILE_VIDEO_CLIP_CHILD="VIDEO_CLIP_C";
+
     public static final int HOME=0x000;
     public static final int HOME_PIC=0x001;
     public static final int HOME_VIDEO=0x002;
