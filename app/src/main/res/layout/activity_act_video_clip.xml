@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/x36">
                 <ImageView
+                    android:id="@+id/act_video_cilp_image_close"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/ic_icoon_close_24"
@@ -60,11 +61,11 @@
                     android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
-                    android:text="@string/app_act_pic_take"
+                    android:text="@string/app_act_video_clip_right"
                     android:layout_alignParentRight="true"
                     android:textColor="@android:color/white"
                     android:background="@drawable/shape_color_homes"
-                    android:layout_height="@dimen/x24">
+                    android:layout_height="@dimen/x30">
 
                 </android.support.v7.widget.AppCompatButton>
             </RelativeLayout>

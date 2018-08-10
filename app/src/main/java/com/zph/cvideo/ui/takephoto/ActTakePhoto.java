@@ -76,7 +76,7 @@ public class ActTakePhoto extends MvpActivity<TakePhotoView, TakePhtotPresenter>
     protected void onStart() {
         super.onStart();
         setStatusBarTransparent();
-    }
+}
     @Override
     protected void onResume() {
         super.onResume();

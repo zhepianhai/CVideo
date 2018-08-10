@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -139,10 +140,6 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
 
     }
     private void initVideoView(){
-
-
-
-
         mLinearLayoutManager=new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerview.setLayoutManager(mLinearLayoutManager);
@@ -251,6 +248,14 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         mVideoView.seekTo(startTime*1000);
     }
 
+    private void returnTOList(){
+        mNavLay.setVisibility(View.VISIBLE);
+        mLayVideo.setVisibility(View.GONE);
+        mLayList.setVisibility(View.VISIBLE);
+        mVideoView.stopPlayback();
+        setStatusBarColor(getResources().getColor(R.color.colorHome));
+    }
+
     @NonNull
     @Override
     public ClipVideoPresenter createPresenter() {
@@ -327,15 +332,31 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         switch (v.getId()) {
             case R.id.nav_btn_left:
                 if(mLayVideo.getVisibility()==View.VISIBLE){
-                    mLayVideo.setVisibility(View.GONE);
-                    mLayList.setVisibility(View.VISIBLE);
-                    mVideoView.stopPlayback();
+                    returnTOList();
                 }else{
                     this.finish();
                 }
 
                 break;
+
+            case R.id.act_video_cilp_image_close:
+                returnTOList();
+                break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if(mLayVideo.getVisibility()==View.VISIBLE){
+                    returnTOList();
+                }
+                return true;
+        }
+        return true;
+
+
     }
 
     @Override
@@ -343,11 +364,9 @@ public class ActVideoClip extends MvpActivity<ClipVideoView, ClipVideoPresenter>
         mLayVideo.setVisibility(View.VISIBLE);
         mLayList.setVisibility(View.GONE);
         mVideoView.stopPlayback();
-        mNavLay.setBackgroundColor(Color.BLACK);
-        mNavBtnRight.setText("裁剪");
-        mNavBtnRight.setTextColor(Color.WHITE);
-        mNavBtnRight.setVisibility(View.VISIBLE);
-        setStatusBarColor(getResources().getColor(R.color.black));
+        mNavLay.setVisibility(View.GONE);
+        setStatusBarColor(Color.BLACK);
+        setStatusBarTransparent();
 
 //        mTakePhotoProsenter.initVideoView(mArrayData.get(position).get(CONST_QUERY.VIDEO_IMAGE_PATH));
 

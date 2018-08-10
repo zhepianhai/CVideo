@@ -55,6 +55,7 @@ public abstract class MvpActivity <V extends MvpView, P extends MvpPresenter<V>>
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("TAG","MvpActivity OnCreate");
         setContentView(R.layout.act_root);
         this.initNav();
         getMvpDelegate().onCreate(savedInstanceState);

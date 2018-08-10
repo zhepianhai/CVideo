@@ -4,6 +4,7 @@
     <string name="title_clip">剪辑视频</string>
 
     <string name="app_act_video_clip">剪辑视频</string>
+    <string name="app_act_video_clip_right">裁剪</string>
 
     <string name="app_act_pic_take">拍照</string>
 
